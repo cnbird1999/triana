@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ioc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="b2148814-4587-e864-8947-974909110395" last-modified="2014-01-25T09:32:48-05:00" xmlns="http://schemas.mandiant.com/2010/ioc">
+  <short_description>sample pdf malware</short_description>
+  <description>PDFExaminer malware PDF detection</description>
+  <authored_by>MalwareTracker.com: PDFExaminer.com</authored_by>
+  <authored_date>2014-01-25T09:32:48-05:00</authored_date>
+  <links>
+    <link rel="report">https://www.malwaretracker.com//pdfsearch.php?hash=fc67c763fc57a1a47210559613dfc5d5</link>
+    <link rel="category">Trojan</link>
+    <link rel="rating">malware</link>
+    <link rel="comment">12.0@1395: suspicious.flash Embedded Flash define obj<br />20.0@4368: pdf.exploit fontfile SING table overflow CVE-2010-2883 generic<br />20.0@4368: pdf.exploit fontfile SING table overflow CVE-2010-2883 A<br />35.0@5611: pdf.exploit fontfile SING table overflow CVE-2010-2883 A<br />26.0@6337: pdf.exploit fontfile SING table overflow CVE-2010-2883 generic<br />26.0@6337: pdf.exploit fontfile SING table overflow CVE-2010-2883 A<br />38.0@7042: suspicious.warning: object contains JavaScript<br />39.0@8527: suspicious.obfuscation using substring<br />39.0@8527: suspicious.warning: object contains JavaScript<br />29.0@308005: suspicious.warning: object contains JavaScript<br /></link>
+    <link rel="severity">100</link>
+    <link rel="has_js">1</link>
+    <link rel="has_flash">0</link>
+    <link rel="has_embedded">0</link>
+    <link rel="encrypted"></link>
+
+  </links>
+  <definition>
+    <Indicator operator="OR">
+      <IndicatorItem id="a3b8f025-5100-5e04-0dec-ef1346a70deb" condition="is">
+        <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+        <Content type="md5">fc67c763fc57a1a47210559613dfc5d5</Content>
+      </IndicatorItem>
+      <IndicatorItem id="192c5a8e-2929-f194-599c-12f7216a8e9d" condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="string">41dfa78fb7479be33de043ac6a647e71d18aea2f</Content>
+      </IndicatorItem>
+      <IndicatorItem id="e2bf8fb2-85cb-ffe4-9173-368ae9c1ee09" condition="is">
+        <Context document="FileItem" search="FileItem/Sha256sum" type="mir" />
+        <Content type="string">138e6d4673cc3ebc1aa423feba9d8f53c8cb9f017e15da2f798bd987c7abaf8c</Content>
+      </IndicatorItem>
+      <IndicatorItem id="e8ca0ede-0b05-3684-8dc8-1c85b728b126" condition="is">
+        <Context document="FileItem" search="FileItem/FileName" type="mir" />
+        <Content type="string">138e6d4673cc3ebc1aa423feba9d8f53c8cb9f017e15da2f798bd987c7abaf8c</Content>
+      </IndicatorItem>
+      <Indicator operator="AND" id="899c2621-417e-cb04-0dca-07033f983748">
+        <IndicatorItem id="f8e0f30c-dd22-7fe4-e579-e618351f1fd9" condition="is">
+          <Context document="FileItem" search="FileItem/SizeInBytes" type="mir" />
+          <Content type="int">313920</Content>
+        </IndicatorItem>
+      </Indicator>
+    </Indicator>
+  </definition>
+</ioc>
